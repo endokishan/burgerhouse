@@ -1,4 +1,7 @@
-$primary : red;
+@import './variables';
+
 body {
-    background: $primary;
+    font-family: 'Lato', sans-serif;
+    -webkit-font-smoothing : antialiased;
+    color: $dark;
 }
