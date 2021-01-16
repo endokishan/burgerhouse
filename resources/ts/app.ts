@@ -1,0 +1,1 @@
+alert('Hello Messge .ts ok')

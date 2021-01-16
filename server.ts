@@ -6,12 +6,14 @@ import path from 'path'
 const app = express();
 const PORT = process.env.PORT || 8000;
 
+// Assets
+app.use(express.static('public'));
 
 app.get('/', (req, res) => {
     res.render('home');
 });
 
-
+// set Template Engine
 app.use(expressLayout);
 app.set('views', path.join(__dirname, '/resources/views'));
 app.set('view engine', 'ejs');

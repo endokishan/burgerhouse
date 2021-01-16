@@ -4,8 +4,8 @@
   "description": "It's a Realtime Burger Ordering and Delivering App",
   "main": "index.js",
   "scripts": {
-    "serve" : "ts-node server.ts",
-    "dev" : "nodemon --exec ts-node server.ts"
+    "serve": "ts-node server.ts",
+    "dev": "nodemon --exec ts-node server.ts"
   },
   "author": "endokishan",
   "license": "ISC",
@@ -23,6 +23,11 @@
   },
   "devDependencies": {
     "@types/nodemon": "^1.19.0",
-    "nodemon": "^2.0.7"
+    "laravel-mix": "^6.0.10",
+    "nodemon": "^2.0.7",
+    "postcss": "^8.2.4",
+    "resolve-url-loader": "^3.1.0",
+    "sass": "^1.32.4",
+    "sass-loader": "^8.0.2"
   }
 }
