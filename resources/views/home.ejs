@@ -1,172 +1,139 @@
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Realtime Burger</title <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/css/app.css">
-</head>
-
-<body>
-    <!-- Nav Bar -->
-    <nav class="container flex items-center justify-between py-4 px-12">
-        <div>
-            <img src="/img/logo.png" alt="logo">
+<!-- Hero Section -->
+<section class="hero py-16">
+    <div class="container px-8 flex items-center justify-between">
+        <div class="w-1/2">
+            <h6 class="text-lg"><em>Are You Hungry?</em></h6>
+            <h1 class="text-2xl font-bold"><em>EVERY BITE A BETTER BURGER</em></h1>
+            <h1 class="text-6xl font-bold">Don't Wait</h1>
+            <button class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary">Order Now</button>
         </div>
-        <div>
-            <ul class="flex items-center">
-                <li class="ml-6"><a href="#">Menu</a></li>
-                <li class="ml-6"><a href="#">Offers</a></li>
-                <li class="ml-6"><a href="#">Register</a></li>
-                <li class="ml-6"><a href="#">Login</a></li>
-                <li class="ml-6"><a href="#" class="inline-block px-4 py-2 rounded-full"><img src="/img/cart.png"
-                            alt=""></a></li>
-            </ul>
+        <div class="w-1/2">
+            <img src="/img/hero-burger.png" alt="">
         </div>
-    </nav>
+    </div>
+</section>
 
-    <!-- Hero Section -->
-    <section class="hero py-16">
-        <div class="container px-8 flex items-center justify-between">
-            <div class="w-1/2">
-                <h6 class="text-lg"><em>Are You Hungry?</em></h6>
-                <h1 class="text-2xl font-bold"><em>EVERY BITE A BETTER BURGER</em></h1>
-                <h1 class="text-6xl font-bold">Don't Wait</h1>
-                <button class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary">Order Now</button>
-            </div>
-            <div class="w-1/2">
-                <img src="/img/hero-burger.png" alt="">
+<!-- Menu Section -->
+<section class="menu container px-16 py-8">
+    <h1 class="text-xl font-bold mb-12">All Burgers</h1>
+
+    <!-- Wrapper -->
+    <div class="grid grid-cols-3 gap-x-12 gap-y-12">
+
+        <!-- Card -->
+        <div class="container mx-auto card shadow-md">
+            <div class=" flex items-center justify-around">
+                <img class=" h-42 w-40 rounded-r-lg
+                " src="/img/whooperb.jpeg" alt="">
+                <div class="">
+                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
+                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
+                        Whooper</p>
+                    <div class="flex items-center justify-around mt-8">
+                        <span class="font-bold text-lg">₹249/-</span>
+                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Menu Section -->
-    <section class="menu container px-16 py-8">
-        <h1 class="text-xl font-bold mb-12">All Burgers</h1>
-
-        <!-- Wrapper -->
-        <div class="grid grid-cols-3 gap-x-12 gap-y-12">
-
-            <!-- Card -->
-            <div class="container mx-auto card shadow-md">
-                <div class=" flex items-center justify-around">
-                    <img class=" h-42 w-40" src="/img/whooperb.jpeg" alt="">
-                    <div class="">
-                        <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                        <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                            Whooper</p>
-                        <div class="flex items-center justify-around mt-8">
-                            <span class="font-bold text-lg">₹249/-</span>
-                            <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                                <span>+</span>
-                                <span class="ml-4">Add</span>
-                            </button>
-                        </div>
+        <!-- Card -->
+        <div class="container mx-auto card shadow-md">
+            <div class=" flex items-center justify-around">
+                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
+                <div class="">
+                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
+                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
+                        Whooper</p>
+                    <div class="flex items-center justify-around mt-8">
+                        <span class="font-bold text-lg">₹249/-</span>
+                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                        </button>
                     </div>
                 </div>
             </div>
-
-            <!-- Card -->
-            <div class="container mx-auto card shadow-md">
-                <div class=" flex items-center justify-around">
-                    <img class=" h-42 w-40" src="/img/whooperb.jpeg" alt="">
-                    <div class="">
-                        <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                        <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                            Whooper</p>
-                        <div class="flex items-center justify-around mt-8">
-                            <span class="font-bold text-lg">₹249/-</span>
-                            <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                                <span>+</span>
-                                <span class="ml-4">Add</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card -->
-            <div class="container mx-auto card shadow-md">
-                <div class=" flex items-center justify-around">
-                    <img class=" h-42 w-40" src="/img/whooperb.jpeg" alt="">
-                    <div class="">
-                        <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                        <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                            Whooper</p>
-                        <div class="flex items-center justify-around mt-8">
-                            <span class="font-bold text-lg">₹249/-</span>
-                            <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                                <span>+</span>
-                                <span class="ml-4">Add</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card -->
-            <div class="container mx-auto card shadow-md">
-                <div class=" flex items-center justify-around">
-                    <img class=" h-42 w-40" src="/img/whooperb.jpeg" alt="">
-                    <div class="">
-                        <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                        <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                            Whooper</p>
-                        <div class="flex items-center justify-around mt-8">
-                            <span class="font-bold text-lg">₹249/-</span>
-                            <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                                <span>+</span>
-                                <span class="ml-4">Add</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card -->
-            <div class="container mx-auto card shadow-md">
-                <div class=" flex items-center justify-around">
-                    <img class=" h-42 w-40" src="/img/whooperb.jpeg" alt="">
-                    <div class="">
-                        <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                        <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                            Whooper</p>
-                        <div class="flex items-center justify-around mt-8">
-                            <span class="font-bold text-lg">₹249/-</span>
-                            <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                                <span>+</span>
-                                <span class="ml-4">Add</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card -->
-            <div class="container mx-auto card shadow-md">
-                <div class=" flex items-center justify-around">
-                    <img class=" h-42 w-40" src="/img/whooperb.jpeg" alt="">
-                    <div class="">
-                        <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                        <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                            Whooper</p>
-                        <div class="flex items-center justify-around mt-8">
-                            <span class="font-bold text-lg">₹249/-</span>
-                            <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                                <span>+</span>
-                                <span class="ml-4">Add</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </section>
 
-    <script src="/js/app.js"></script>
-</body>
+        <!-- Card -->
+        <div class="container mx-auto card shadow-md">
+            <div class=" flex items-center justify-around">
+                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
+                <div class="">
+                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
+                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
+                        Whooper</p>
+                    <div class="flex items-center justify-around mt-8">
+                        <span class="font-bold text-lg">₹249/-</span>
+                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-</html>
+        <!-- Card -->
+        <div class="container mx-auto card shadow-md">
+            <div class=" flex items-center justify-around">
+                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
+                <div class="">
+                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
+                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
+                        Whooper</p>
+                    <div class="flex items-center justify-around mt-8">
+                        <span class="font-bold text-lg">₹249/-</span>
+                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card -->
+        <div class="container mx-auto card shadow-md">
+            <div class=" flex items-center justify-around">
+                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
+                <div class="">
+                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
+                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
+                        Whooper</p>
+                    <div class="flex items-center justify-around mt-8">
+                        <span class="font-bold text-lg">₹249/-</span>
+                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card -->
+        <div class="container mx-auto card shadow-md">
+            <div class=" flex items-center justify-around">
+                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
+                <div class="">
+                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
+                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
+                        Whooper</p>
+                    <div class="flex items-center justify-around mt-8">
+                        <span class="font-bold text-lg">₹249/-</span>
+                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                            <span>+</span>
+                            <span class="ml-4">Add</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

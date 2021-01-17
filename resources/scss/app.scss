@@ -49,3 +49,10 @@ section.hero {
         background: $primary-hover;
     }
 }
+
+section.cart {
+    background: $secondary;
+    .amount {
+        color: $primary;
+    }
+}
