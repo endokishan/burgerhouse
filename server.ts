@@ -16,12 +16,21 @@ app.set('view engine', 'ejs');
 
 
 // Routes
+// Home Page
 app.get('/', (req, res) => {
     res.render('home');
 });
-
+// Cart Page
 app.get('/cart', (req, res) => {
-    res.render('customers/cart')
+    res.render('customers/cart');
+});
+// Login Page
+app.get('/login', (req,res) => {
+    res.render('auth/login');
+});
+// Register Page
+app.get('/register', (req,res) => {
+    res.render('auth/register');
 });
 
 app.listen(PORT, () => {
