@@ -10,12 +10,12 @@
 [+] Install Laravel Mix
     - setup js and scss
 [+] Install tailwind css
-[-] Create Home page using Html and Css
-[-] Create Cart page
+[+] Create Home page using Html and Css
+[+] Create Cart page
     - order summary section
     - empty cart section
-[-] - move routes to routes files
-[-] - Create dedicated controllers
+[+] - move routes to routes files
+[+] - Create dedicated controllers
 [-] Add to cart functionality
     [-] Fetch all pizzas from db and show on home page
     [-] Create menu model and put dummy Data

@@ -1,38 +1,48 @@
 import express from 'express';
-import ejs from 'ejs';
 import expressLayout from 'express-ejs-layouts';
-import path from 'path'
+import path from 'path';
+import WebRoutes from './routes/WebRoutes';
 
-const app = express();
-const PORT = process.env.PORT || 8000;
+export class Server {
+    public app: express.Application = express();
 
-// Assets
-app.use(express.static(path.join(__dirname, 'public')));
+    constructor() {
+        this.setConfiguration();
 
-// set Template Engine
-app.use(expressLayout);
-app.set('views', path.join(__dirname, '/resources/views'));
-app.set('view engine', 'ejs');
+        this.setRoutes();
 
+        this.error404Handler();
 
-// Routes
-// Home Page
-app.get('/', (req, res) => {
-    res.render('home');
-});
-// Cart Page
-app.get('/cart', (req, res) => {
-    res.render('customers/cart');
-});
-// Login Page
-app.get('/login', (req,res) => {
-    res.render('auth/login');
-});
-// Register Page
-app.get('/register', (req,res) => {
-    res.render('auth/register');
-});
+        this.handleError();
+    }
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+    setConfiguration() {
+        this.connectMongoDB();
+
+        this.configBodyParser();
+    }
+
+    connectMongoDB() {
+
+    };
+
+    configBodyParser() {
+
+    };
+
+    setRoutes() {
+        this.app.use(express.static(path.join(__dirname, 'public')));
+        this.app.use(expressLayout);
+        this.app.set('views', path.join(__dirname, '/resources/views'));
+        this.app.set('view engine', 'ejs');
+        this.app.use('/', WebRoutes);
+    };
+
+    error404Handler() {
+
+    };
+
+    handleError() {
+
+    };
+};
