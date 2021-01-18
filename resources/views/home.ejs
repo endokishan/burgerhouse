@@ -20,17 +20,19 @@
     <!-- Wrapper -->
     <div class="grid grid-cols-3 gap-x-12 gap-y-12">
 
+        <!-- Javascript -->
+        <% burgerMenu.forEach(function(burger) { %>
+
         <!-- Card -->
         <div class="container mx-auto card shadow-md">
             <div class=" flex items-center justify-around">
                 <img class=" h-42 w-40 rounded-r-lg
-                " src="/img/whooperb.jpeg" alt="">
+                " src="/img/<%= burger.image %>" alt="">
                 <div class="">
-                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                        Whooper</p>
+                    <h2 class=" text-2xl ml-4 font-bold mt-0"><%= burger.name %></h2>
+                    <p class="text-xs uppercase px-4 py-3 mt-5"><%= burger.summary %></p>
                     <div class="flex items-center justify-around mt-8">
-                        <span class="font-bold text-lg">₹249/-</span>
+                        <span class="font-bold text-lg">₹<%= burger.price %>/-</span>
                         <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
                             <span>+</span>
                             <span class="ml-4">Add</span>
@@ -39,101 +41,7 @@
                 </div>
             </div>
         </div>
-
-        <!-- Card -->
-        <div class="container mx-auto card shadow-md">
-            <div class=" flex items-center justify-around">
-                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
-                <div class="">
-                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                        Whooper</p>
-                    <div class="flex items-center justify-around mt-8">
-                        <span class="font-bold text-lg">₹249/-</span>
-                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                            <span>+</span>
-                            <span class="ml-4">Add</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card -->
-        <div class="container mx-auto card shadow-md">
-            <div class=" flex items-center justify-around">
-                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
-                <div class="">
-                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                        Whooper</p>
-                    <div class="flex items-center justify-around mt-8">
-                        <span class="font-bold text-lg">₹249/-</span>
-                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                            <span>+</span>
-                            <span class="ml-4">Add</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card -->
-        <div class="container mx-auto card shadow-md">
-            <div class=" flex items-center justify-around">
-                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
-                <div class="">
-                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                        Whooper</p>
-                    <div class="flex items-center justify-around mt-8">
-                        <span class="font-bold text-lg">₹249/-</span>
-                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                            <span>+</span>
-                            <span class="ml-4">Add</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card -->
-        <div class="container mx-auto card shadow-md">
-            <div class=" flex items-center justify-around">
-                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
-                <div class="">
-                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                        Whooper</p>
-                    <div class="flex items-center justify-around mt-8">
-                        <span class="font-bold text-lg">₹249/-</span>
-                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                            <span>+</span>
-                            <span class="ml-4">Add</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Card -->
-        <div class="container mx-auto card shadow-md">
-            <div class=" flex items-center justify-around">
-                <img class=" h-42 w-40 rounded-r-lg" src="/img/whooperb.jpeg" alt="">
-                <div class="">
-                    <h2 class=" text-2xl ml-4 font-bold mt-0">Mutton Whooper</h2>
-                    <p class="text-xs uppercase px-4 py-3 mt-5">Flamed grilled signature mutton patty
-                        Whooper</p>
-                    <div class="flex items-center justify-around mt-8">
-                        <span class="font-bold text-lg">₹249/-</span>
-                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
-                            <span>+</span>
-                            <span class="ml-4">Add</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <% })%>
 
     </div>
 </section>
