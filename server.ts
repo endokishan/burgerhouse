@@ -1,9 +1,9 @@
+require('dotenv').config();
 import express from 'express';
 import mongoose from "mongoose";
 import expressLayout from 'express-ejs-layouts';
 import path from 'path';
 import WebRoutes from './routes/WebRoutes';
-import { getEnvironmentVariables } from './app/environments/env';
 
 export class Server {
     public app: express.Application = express();
@@ -25,7 +25,8 @@ export class Server {
     }
 
     connectMongoDB() {
-        mongoose.connect(getEnvironmentVariables().db_URL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false }).then(() => {
+        const db_URL = process.env.MONGO_DB_URL;
+        mongoose.connect(db_URL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false }).then(() => {
             console.log("mongodb database is connected");
         }).catch(err => {
             console.log("Database Connection Failed");
