@@ -1,7 +1,9 @@
 import express from 'express';
+import mongoose from "mongoose";
 import expressLayout from 'express-ejs-layouts';
 import path from 'path';
 import WebRoutes from './routes/WebRoutes';
+import { getEnvironmentVariables } from './app/environments/env';
 
 export class Server {
     public app: express.Application = express();
@@ -23,7 +25,11 @@ export class Server {
     }
 
     connectMongoDB() {
-
+        mongoose.connect(getEnvironmentVariables().db_URL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false }).then(() => {
+            console.log("mongodb database is connected");
+        }).catch(err => {
+            console.log("Database Connection Failed");
+        });
     };
 
     configBodyParser() {
@@ -31,10 +37,15 @@ export class Server {
     };
 
     setRoutes() {
+        // Assets
         this.app.use(express.static(path.join(__dirname, 'public')));
+
+        // Set Template Engine
         this.app.use(expressLayout);
         this.app.set('views', path.join(__dirname, '/resources/views'));
         this.app.set('view engine', 'ejs');
+
+        // Routes
         this.app.use('/', WebRoutes);
     };
 
