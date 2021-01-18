@@ -1,9 +1,12 @@
 require('dotenv').config();
 import express from 'express';
-import mongoose from "mongoose";
+import mongoose, { Collection, mongo } from "mongoose";
 import expressLayout from 'express-ejs-layouts';
 import path from 'path';
 import WebRoutes from './routes/WebRoutes';
+import session from 'express-session';
+import flash from 'express-flash';
+import connectMongo from 'connect-mongo';
 
 export class Server {
     public app: express.Application = express();
@@ -27,9 +30,9 @@ export class Server {
     connectMongoDB() {
         const db_URL = process.env.MONGO_DB_URL;
         mongoose.connect(db_URL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false }).then(() => {
-            console.log("mongodb database is connected");
+            console.log('MongoDB Database Connected....');
         }).catch(err => {
-            console.log("Database Connection Failed");
+            console.log('MongoDB Connection Failed.....');
         });
     };
 
@@ -38,6 +41,25 @@ export class Server {
     };
 
     setRoutes() {
+        // Session Store
+        const MongoStore = connectMongo(session);
+        let MongoDbStore = new MongoStore({
+            mongooseConnection: mongoose.connection,
+            collection: 'sessions'
+        });
+
+        // Session Config
+        this.app.use(session({
+            secret: process.env.COOKIE_SECRET,
+            resave: false,
+            store : MongoDbStore,
+            saveUninitialized: false,
+            cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24 hours
+        }));
+
+        // Express flash
+        this.app.use(flash());
+
         // Assets
         this.app.use(express.static(path.join(__dirname, 'public')));
 
