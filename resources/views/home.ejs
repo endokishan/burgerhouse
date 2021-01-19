@@ -33,7 +33,7 @@
                     <p class="text-xs uppercase px-4 py-3 mt-5"><%= burger.summary %></p>
                     <div class="flex items-center justify-around mt-8">
                         <span class="font-bold text-lg">₹<%= burger.price %>/-</span>
-                        <button class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                        <button data-burger="<%= JSON.stringify(burger)%>" class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
                             <span>+</span>
                             <span class="ml-4">Add</span>
                         </button>

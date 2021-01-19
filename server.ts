@@ -52,7 +52,7 @@ export class Server {
         this.app.use(session({
             secret: process.env.COOKIE_SECRET,
             resave: false,
-            store : MongoDbStore,
+            store: MongoDbStore,
             saveUninitialized: false,
             cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24 hours
         }));
@@ -62,6 +62,15 @@ export class Server {
 
         // Assets
         this.app.use(express.static(path.join(__dirname, 'public')));
+
+        // JSON Config
+        this.app.use(express.json());
+
+        // Global Middlewares
+        this.app.use((req, res, next) => {
+            res.locals.session = req.session;
+            next();
+        });
 
         // Set Template Engine
         this.app.use(expressLayout);

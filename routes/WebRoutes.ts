@@ -34,8 +34,8 @@ export class WebRoutes {
     };
 
     postRoutes() {
-
-    }
+        this.router.post('/update-cart', CartController.update);
+    };
 
     patchRoutes() {
 

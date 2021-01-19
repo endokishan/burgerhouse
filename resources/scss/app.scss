@@ -1,12 +1,16 @@
 @import './variables';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/metroui.scss';
 
 body {
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
     color: $dark;
 }
+
 nav li:last-child a {
     background: $primary;
+
     &:hover {
         background: $primary-hover;
     }
@@ -14,6 +18,7 @@ nav li:last-child a {
 
 nav li a {
     transition: $smooth;
+
     &:hover {
         color: $primary;
     }
@@ -27,10 +32,14 @@ section.hero {
     border: 2px solid $primary;
     color: $primary;
     transition: $smooth;
-    &:hover{
+
+    &:hover {
         background: $primary;
         border-color: $pure;
         color: $pure;
+    }
+    &:focus {
+        outline: none;
     }
 }
 
@@ -45,13 +54,18 @@ section.hero {
 .btn-primary {
     background: $primary;
     transition: $smooth;
+
     &:hover {
         background: $primary-hover;
+    }
+    &:focus {
+        outline: none;
     }
 }
 
 section.cart {
     background: $secondary;
+
     .amount {
         color: $primary;
     }
@@ -60,10 +74,17 @@ section.cart {
 section.login {
     background: $secondary;
     min-height: calc(100vh - 86px);
+
     a {
         color: $primary;
-        &:hover{
+
+        &:hover {
             color: $primary-hover;
         }
     }
+}
+
+.noty_theme__metroui {
+    border-radius: 50px!important;
+    padding-left: 8px!important;
 }
