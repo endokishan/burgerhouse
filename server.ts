@@ -24,7 +24,7 @@ export class Server {
     setConfiguration() {
         this.connectMongoDB();
 
-        this.configBodyParser();
+        this.globalMiddleware();
     }
 
     connectMongoDB() {
@@ -36,11 +36,7 @@ export class Server {
         });
     };
 
-    configBodyParser() {
-
-    };
-
-    setRoutes() {
+    globalMiddleware() {
         // Session Store
         const MongoStore = connectMongo(session);
         let MongoDbStore = new MongoStore({
@@ -76,7 +72,9 @@ export class Server {
         this.app.use(expressLayout);
         this.app.set('views', path.join(__dirname, '/resources/views'));
         this.app.set('view engine', 'ejs');
+    };
 
+    setRoutes() {
         // Routes
         this.app.use('/', WebRoutes);
     };

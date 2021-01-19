@@ -1857,13 +1857,13 @@ function updateCart(item) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
       type: 'warning',
       theme: 'metroui',
-      timeout: 2000,
+      timeout: 1500,
       text: "".concat(res.data.itemName, " added to Cart")
     }).show();
   })["catch"](function (err) {
     new (noty__WEBPACK_IMPORTED_MODULE_1___default())({
       type: 'error',
-      timeout: 2000,
+      timeout: 1500,
       text: "Something went Wrong"
     }).show();
   });
