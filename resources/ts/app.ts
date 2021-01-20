@@ -1,5 +1,6 @@
 import axios from 'axios';
 import Noty from 'noty';
+import { Admin } from './Admin';
 
 let addToCart = document.querySelectorAll('.add-to-cart');
 let cartCounter = document.querySelector('#cartCounter');
@@ -9,7 +10,7 @@ function updateCart(item) {
         cartCounter.innerText = res.data.totalQty;
         new Noty({
             type: 'warning',
-            theme : 'metroui',
+            theme: 'metroui',
             timeout: 1500,
             text: `${res.data.itemName} added to Cart`
         }).show();
@@ -28,3 +29,14 @@ addToCart.forEach((btn) => {
         updateCart(item);
     });
 });
+
+// Removing Successful order alert message
+const alertMsg = document.querySelector('#success-alert');
+if (alertMsg) {
+    setTimeout(() => {
+        alertMsg.remove();
+    }, 2000);
+};
+
+// Calling Admin 
+Admin.initAdmin();

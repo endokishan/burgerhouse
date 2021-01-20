@@ -1,4 +1,3 @@
-import { Utils } from "../../config/Utils";
 import User from "../../models/User";
 import Bcrypt from 'bcrypt';
 import Passport from "passport";
@@ -55,7 +54,7 @@ export class AuthController {
         };
 
         // encrypting Password
-        const hashPassword = await Utils.encryptPassword(password);
+        const hashPassword = await Bcrypt.hash(password, 10);
 
         // Creating User Structure
         const user = new User({
