@@ -25,11 +25,13 @@ export class Server {
         this.connectMongoDB();
 
         this.globalMiddleware();
+
+        this.configBodyParser();
     }
 
     connectMongoDB() {
         const db_URL = process.env.MONGO_DB_URL;
-        mongoose.connect(db_URL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false }).then(() => {
+        mongoose.connect(db_URL, { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true }).then(() => {
             console.log('MongoDB Database Connected....');
         }).catch(err => {
             console.log('MongoDB Connection Failed.....');
@@ -72,6 +74,10 @@ export class Server {
         this.app.use(expressLayout);
         this.app.set('views', path.join(__dirname, '/resources/views'));
         this.app.set('view engine', 'ejs');
+    };
+
+    configBodyParser() {
+        this.app.use(express.urlencoded({ extended: true }));
     };
 
     setRoutes() {

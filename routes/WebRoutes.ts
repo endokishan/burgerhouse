@@ -34,7 +34,11 @@ export class WebRoutes {
     };
 
     postRoutes() {
+        // Cart Update
         this.router.post('/update-cart', CartController.update);
+
+        // User Registration
+        this.router.post('/register', AuthController.postRegister);
     };
 
     patchRoutes() {
