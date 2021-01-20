@@ -7,6 +7,8 @@ import WebRoutes from './routes/WebRoutes';
 import session from 'express-session';
 import flash from 'express-flash';
 import connectMongo from 'connect-mongo';
+import Passport from 'passport';
+import { PassportInit } from './app/config/passport';
 
 export class Server {
     public app: express.Application = express();
@@ -39,6 +41,7 @@ export class Server {
     };
 
     globalMiddleware() {
+
         // Session Store
         const MongoStore = connectMongo(session);
         let MongoDbStore = new MongoStore({
@@ -55,6 +58,11 @@ export class Server {
             cookie: { maxAge: 1000 * 60 * 60 * 24 } // 24 hours
         }));
 
+        // Passport Config
+        PassportInit.init(Passport);
+        this.app.use(Passport.initialize());
+        this.app.use(Passport.session());
+
         // Express flash
         this.app.use(flash());
 
@@ -67,6 +75,7 @@ export class Server {
         // Global Middlewares
         this.app.use((req, res, next) => {
             res.locals.session = req.session;
+            res.locals.user = req.user;
             next();
         });
 

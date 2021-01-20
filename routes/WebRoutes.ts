@@ -2,6 +2,7 @@ import { Router } from "express";
 import { AuthController } from "../app/http/controllers/AuthController";
 import { CartController } from "../app/http/controllers/customers/CartController";
 import { HomeController } from "../app/http/controllers/HomeController";
+import { GuestUser } from "../app/http/middlewares/GuestUser";
 
 
 export class WebRoutes {
@@ -24,10 +25,10 @@ export class WebRoutes {
         this.router.get('/', HomeController.home);
 
         // Login Page
-        this.router.get('/login', AuthController.login);
+        this.router.get('/login', GuestUser.Guest, AuthController.login);
 
         // SignUp Page
-        this.router.get('/register', AuthController.register);
+        this.router.get('/register', GuestUser.Guest, AuthController.register);
 
         // Customers Cart Page
         this.router.get('/cart', CartController.cart);
@@ -39,6 +40,12 @@ export class WebRoutes {
 
         // User Registration
         this.router.post('/register', AuthController.postRegister);
+
+        // User Login
+        this.router.post('/login', AuthController.postLogin);
+
+        // Logout
+        this.router.post('/logout', AuthController.logout);
     };
 
     patchRoutes() {
