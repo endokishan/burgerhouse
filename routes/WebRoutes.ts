@@ -4,7 +4,7 @@ import { AuthController } from "../app/http/controllers/AuthController";
 import { CartController } from "../app/http/controllers/customers/CartController";
 import { OrderController } from "../app/http/controllers/customers/OrderController";
 import { HomeController } from "../app/http/controllers/HomeController";
-import { GuestUser } from "../app/http/middlewares/GuestUser";
+import { AuthMiddleware } from "../app/http/middlewares/AuthMiddleware";
 
 
 export class WebRoutes {
@@ -27,19 +27,19 @@ export class WebRoutes {
         this.router.get('/', HomeController.home);
 
         // Login Page
-        this.router.get('/login', GuestUser.Guest, AuthController.login);
+        this.router.get('/login', AuthMiddleware.Guest, AuthController.login);
 
         // SignUp Page
-        this.router.get('/register', GuestUser.Guest, AuthController.register);
+        this.router.get('/register', AuthMiddleware.Guest, AuthController.register);
 
         // Customers Cart Page
         this.router.get('/cart', CartController.cart);
 
         // Customers Order Page
-        this.router.get('/customer/orders', GuestUser.Auth, OrderController.index);
+        this.router.get('/customer/orders', AuthMiddleware.Auth, OrderController.index);
 
-        // Admin Routes
-        this.router.get('/admin/orders', GuestUser.Auth, AdminOrderController.index);
+        // Admin Order Page
+        this.router.get('/admin/orders', AuthMiddleware.Admin, AdminOrderController.index);
     };
 
     postRoutes() {
@@ -56,7 +56,7 @@ export class WebRoutes {
         this.router.post('/logout', AuthController.logout);
 
         // Customer Orders
-        this.router.post('/orders', GuestUser.Auth, OrderController.store)
+        this.router.post('/orders', AuthMiddleware.Auth, OrderController.store)
     };
 
     patchRoutes() {

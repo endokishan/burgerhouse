@@ -11,7 +11,7 @@ export class AuthController {
         const { email, password } = req.body;
 
         // Validating User
-        if ( !email || !password) {
+        if (!email || !password) {
             req.flash('error', 'All fields are required');
             return res.redirect('/login');
         };
@@ -31,7 +31,8 @@ export class AuthController {
                     return next(err);
                 }
                 // succesfully logged in
-                return res.redirect('/');
+                const checkRole = req.user.role === 'admin' ? '/admin/orders' : '/customer/orders';
+                return res.redirect(checkRole);
 
             });
 

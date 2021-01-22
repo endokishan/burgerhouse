@@ -18,7 +18,8 @@
                 <img class="w-24 rounded-lg shadow-xl" src="/img/<%= cartItem.item.image%>" alt="">
                 <div class="ml-4 flex-1">
                     <h1 class="my-2"><%= cartItem.item.name%></h1>
-                    <span class="text-xs flex-1">₹<%= cartItem.item.price%></span>
+                    <span class="text-xs">Price : ₹<%= cartItem.item.price%></span>
+                    <p class="text-xs my-2 removeItem"><a  class="link" href="#"><i class="fa fa-trash"></i> Remove</a></p>
                 </div>
                 <span class="flex-1"><%= cartItem.qty%> Pcs</span>
                 <span class="font-bold text-lg">₹ <%= cartItem.qty * cartItem.item.price%></span>
@@ -40,8 +41,10 @@
             <!-- Address and Mobile Number -->
             <div>
                 <form action="/orders" method="POST" class="mt-12">
-                    <input name="phone" class="border border-gray-400 p-1 mb-4 w-1/2" type="tel" placeholder="Phone Number">
-                    <textarea name="address" class="border border-gray-400 p-2 w-1/2" type="text" placeholder="Address"></textarea>
+                    <input name="phone" class="border border-gray-400 p-1 mb-4 w-1/2" type="tel"
+                        placeholder="Phone Number">
+                    <textarea name="address" class="border border-gray-400 p-2 w-1/2" type="text"
+                        placeholder="Address"></textarea>
                     <div>
                         <button class="btn-primary px-6 py-2 rounded-full text-white font-bold mt-6" type="submit">Order
                             Now</button>
@@ -52,7 +55,9 @@
             <% } else { %>
 
             <!-- Login to continue Button -->
-            <a href="/login" class="inline-block btn-primary cursor-pointer px-6 py-2 rounded-full text-white font-bold mt-6">Login to continue</a>
+            <a href="/login"
+                class="inline-block btn-primary cursor-pointer px-6 py-2 rounded-full text-white font-bold mt-6">Login
+                to continue</a>
 
             <% } %>
 

@@ -30,6 +30,7 @@ export class OrderController {
     static async index(req, res, next) {
         const orders = await Order.find({ customerId: req.user._id },
             null, { sort: { 'createdAt': -1 } });
+        res.header('Cache-Control', 'no-store, private, no-cache, must-revalidate, mx-stale=0, post-check=0, pre-check=0');
         res.render('customers/orders', { orders: orders, moment: moment });
     }
 };

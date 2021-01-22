@@ -1,4 +1,4 @@
-export class GuestUser {
+export class AuthMiddleware {
     static Guest(req, res, next) {
         if (!req.isAuthenticated()) {
             return next();
@@ -13,4 +13,11 @@ export class GuestUser {
         }
         return res.redirect('/login');
     };
+
+    static Admin(req, res, next) {
+        if (req.isAuthenticated() && req.user.role =='admin') {
+            return next()
+        }
+        return res.redirect('/');
+    }
 };

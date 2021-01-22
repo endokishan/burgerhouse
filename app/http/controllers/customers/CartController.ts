@@ -43,7 +43,8 @@ export class CartController {
 
         return res.json({
             totalQty: req.session.cart.totalQty,
-            itemName: req.body.name
+            itemName: req.body.name,
+            item : req.session.cart.items
         });
     };
 };
