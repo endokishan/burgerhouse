@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { AdminOrderController } from "../app/http/controllers/admin/OrderControllers";
+import { StatusController } from "../app/http/controllers/admin/StatusController";
 import { AuthController } from "../app/http/controllers/AuthController";
 import { CartController } from "../app/http/controllers/customers/CartController";
 import { OrderController } from "../app/http/controllers/customers/OrderController";
@@ -38,6 +39,9 @@ export class WebRoutes {
         // Customers Order Page
         this.router.get('/customer/orders', AuthMiddleware.Auth, OrderController.index);
 
+        // Customer Single Order Page
+        this.router.get('/customer/orders/:id', AuthMiddleware.Auth, OrderController.show);
+
         // Admin Order Page
         this.router.get('/admin/orders', AuthMiddleware.Admin, AdminOrderController.index);
     };
@@ -56,7 +60,10 @@ export class WebRoutes {
         this.router.post('/logout', AuthController.logout);
 
         // Customer Orders
-        this.router.post('/orders', AuthMiddleware.Auth, OrderController.store)
+        this.router.post('/orders', AuthMiddleware.Auth, OrderController.store);
+
+        // Admin Order Status
+        this.router.post('/admin/order/status', AuthMiddleware.Admin, StatusController.update);
     };
 
     patchRoutes() {

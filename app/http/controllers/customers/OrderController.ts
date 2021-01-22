@@ -13,7 +13,7 @@ export class OrderController {
         const order = new Order({
             customerId: req.user._id,
             items: req.session.cart.items,
-            totalPrice : req.session.cart.totalPrice,
+            totalPrice: req.session.cart.totalPrice,
             phone,
             address
         });
@@ -33,4 +33,13 @@ export class OrderController {
             null, { sort: { 'createdAt': -1 } });
         res.render('customers/orders', { orders: orders, moment: moment });
     }
+
+    static async show(req, res) {
+        const order = await Order.findById(req.params.id);
+        // Authorize Order
+        if (req.user._id.toString() === order.customerId.toString()) {
+            return res.render('customers/singleOrder', { order });
+        }
+        return res.redirect('/');
+    };
 };
