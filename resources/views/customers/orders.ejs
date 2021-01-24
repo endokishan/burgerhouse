@@ -18,12 +18,12 @@
         <table class="w-full table-auto bg-white">
             <thead>
                 <tr>
-                    <th class="px-4 py-2 text-left">Orders Status</th>
                     <th class="px-4 py-2 text-left">Orders Details</th>
                     <th class="px-4 py-2 text-left">Total Price</th>
                     <th class="px-4 py-2 text-left">Address / Phone</th>
                     <th class="px-4 py-2 text-left">Payment Status</th>
                     <th class="px-4 py-2 text-left">Date/Time</th>
+                    <th class="px-4 py-2 text-left">Orders Status</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,12 +32,9 @@
                 <% orders.forEach((order) => { %>
                 <tr>
                     <td class="border px-4 py-2">
-                        <a href="/customer/orders/<%= order._id%>" class="link font-bold"><%= order._id%></a>
-                    </td>
-                    <td class="border px-4 py-2">
                         <% let parsedItems = Object.values(order.items) %>
                         <% parsedItems.forEach((i) => { %>
-                            <p class="py-2"><span class="italic"><%= i.item.name%></span><span style="padding-left: 6px"></span><span class="text-xs">(<%= i.item.price%>/pc)</span> <span style="padding-left: 4px;padding-right: 4px;"> = </span> <span class="text-sm italic"><%= i.qty%> PC</span> </p>
+                            <p class="py-2"><span class="italic"><%= i.item.name%></span><span style="padding-left: 6px"></span><span class="text-xs">(<%= i.item.price%>/pc)</span> <span style="padding-left: 4px;padding-right: 4px;"> - </span> <span class="text-sm italic"><%= i.qty%> PC</span> </p>
                         <% }) %>
                     </td>
                     <td class="border px-4 py-2">
@@ -52,6 +49,9 @@
                     </td>
                     <td class="border px-4 py-2">
                         <%= moment(order.createdAt).format('lll') %>
+                    </td>
+                    <td class="border px-4 py-2">
+                        <a href="/customer/orders/<%= order._id%>" class="link font-bold">Track Your Burger</a>
                     </td>
                 </tr>
                 <% }) %>

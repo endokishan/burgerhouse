@@ -1896,7 +1896,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! noty */ "./node_modules/noty/lib/noty.js");
 /* harmony import */ var noty__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(noty__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _Admin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Admin */ "./resources/js/Admin.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Admin__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Admin */ "./resources/js/Admin.js");
+
 
 
 
@@ -1940,7 +1943,7 @@ if (alertMsg) {
 
 ; // Calling Admin 
 
-(0,_Admin__WEBPACK_IMPORTED_MODULE_2__.initAdmin)(); // delete cart items
+(0,_Admin__WEBPACK_IMPORTED_MODULE_3__.initAdmin)(); // delete cart items
 // function deleteCart() {
 //     axios.post('/update-cart').then(res => {
 //         let data = res.data.item;
@@ -1952,6 +1955,38 @@ if (alertMsg) {
 //         deleteCart()
 //     })
 // })
+// change order status
+
+var statuses = document.querySelectorAll('.status-line');
+var hidden = document.querySelector('#hidden');
+var order = hidden ? hidden.value : null;
+order = JSON.parse(order);
+var time = document.createElement('small');
+
+function updateStatus(order) {
+  var stepCompleted = true;
+  statuses.forEach(function (status) {
+    var getData = status.dataset.status;
+
+    if (stepCompleted) {
+      status.classList.add('step-compeleted');
+    }
+
+    ;
+
+    if (getData === order.status) {
+      stepCompleted = false;
+      time.innerText = moment__WEBPACK_IMPORTED_MODULE_2___default()(order.updatedAt).format('hh:mm A');
+      status.appendChild(time);
+
+      if (status.nextElementSibling) {
+        status.nextElementSibling.classList.add('current');
+      }
+    }
+  });
+}
+
+updateStatus(order);
 
 /***/ }),
 

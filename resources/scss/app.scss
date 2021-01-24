@@ -38,6 +38,7 @@ section.hero {
         border-color: $pure;
         color: $pure;
     }
+
     &:focus {
         outline: none;
     }
@@ -58,6 +59,7 @@ section.hero {
     &:hover {
         background: $primary-hover;
     }
+
     &:focus {
         outline: none;
     }
@@ -85,8 +87,8 @@ section.login {
 }
 
 .noty_theme__metroui {
-    border-radius: 50px!important;
-    padding-left: 8px!important;
+    border-radius: 50px !important;
+    padding-left: 8px !important;
 }
 
 .link {
@@ -97,8 +99,13 @@ section.status {
     background: $secondary;
     min-height: calc(100vh - 86px);
 }
+
 .status-box {
     padding: 60px 0 0;
+}
+
+.status-box ul {
+    margin-left: 84px;
 }
 
 .status-box ul span {
@@ -136,4 +143,69 @@ section.status {
 
 .status-box ul li:nth-child(1) span::before {
     content: '\f46c';
+}
+
+.status-box ul li:nth-child(2) span::before {
+    content: '\f058';
+}
+
+.status-box ul li:nth-child(3) span::before {
+    content: '\f805';
+}
+
+.status-box ul li:nth-child(4) span::before {
+    content: '\f48b';
+}
+
+.status-box ul li:nth-child(5) span::before {
+    content: '\f581';
+}
+
+.status-box ul li {
+    position: relative;
+}
+
+// Line
+.status-box ul li::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -6px;
+    width: 2px;
+    height: 100%;
+    background: $dark;
+    margin-top: 10px;
+}
+
+// last  dot
+.status-box ul li:nth-child(5) span::after {
+    box-shadow: 0 20px 1px 20px $secondary;
+}
+
+// step-compeleted
+.status-box ul li.step-compeleted::before {
+    background: $gray;
+}
+.status-box ul li.step-compeleted span::after {
+    background: $gray;
+}
+.status-box ul li.step-compeleted span {
+    color: $gray;
+}
+
+// current
+.status-box ul li.current span {
+    color: $primary;
+    font-weight: bolder;
+    font-size: 25px;
+}
+.status-box ul li.current::after {
+    background: $primary;
+}
+
+// time 
+.status-box ul li small {
+    float: right;
+    font-size: 14px;
+    margin-top: 2px;
 }
