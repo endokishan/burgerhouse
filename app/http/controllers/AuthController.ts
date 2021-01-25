@@ -25,7 +25,7 @@ export class AuthController {
                 req.flash('error', info.message);
                 return res.redirect('/login');
             };
-            req.login(user, (err) => {
+            return req.login(user, (err) => {
                 if (err) {
                     req.flash('error', info.message);
                     return next(err);

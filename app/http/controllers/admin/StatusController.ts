@@ -9,7 +9,7 @@ export class StatusController {
             // Event Emitter
             const eventEmitter = req.app.get('eventEmitter');
             eventEmitter.emit('orderUpdated', {id: req.body.orderId, status: req.body.status});
-            res.redirect('/admin/orders');
+            return res.redirect('/admin/orders');
         })
     }
 }
