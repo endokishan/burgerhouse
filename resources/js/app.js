@@ -1,7 +1,9 @@
 import axios from 'axios';
 import Noty from 'noty';
 import moment from 'moment';
-import { initAdmin } from './Admin';
+import {
+    initAdmin
+} from './Admin';
 
 let addToCart = document.querySelectorAll('.add-to-cart');
 let cartCounter = document.querySelector('#cartCounter');
@@ -89,21 +91,24 @@ updateStatus(order)
 // Socket
 let socket = io();
 
-// Calling Admin 
-initAdmin(socket);
+
 
 // join room
-if(order) {
+if (order) {
     socket.emit('join', `order_${order._id}`);
 };
 
 let adminPath = window.location.pathname;
 if (adminPath.includes('admin')) {
+    // Calling Admin 
+    initAdmin(socket);
     socket.emit('join', 'adminRoom');
 };
 
 socket.on('orderUpdated', (data) => {
-    const updatedOrder = {...order};
+    const updatedOrder = {
+        ...order
+    };
     updatedOrder.updatedAt = moment().format();
     updatedOrder.status = data.status;
     updateStatus(updatedOrder);

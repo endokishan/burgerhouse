@@ -2011,9 +2011,7 @@ function updateStatus(Uorder) {
 
 updateStatus(order); // Socket
 
-var socket = io(); // Calling Admin 
-
-(0,_Admin__WEBPACK_IMPORTED_MODULE_3__.initAdmin)(socket); // join room
+var socket = io(); // join room
 
 if (order) {
   socket.emit('join', "order_".concat(order._id));
@@ -2023,6 +2021,8 @@ if (order) {
 var adminPath = window.location.pathname;
 
 if (adminPath.includes('admin')) {
+  // Calling Admin 
+  (0,_Admin__WEBPACK_IMPORTED_MODULE_3__.initAdmin)(socket);
   socket.emit('join', 'adminRoom');
 }
 

@@ -1,11 +1,13 @@
 <!-- Hero Section -->
 <section class="hero py-16">
-    <div class="container px-8 flex items-center justify-between">
+    <div class="auto px-8 flex items-center justify-between w-11/12">
         <div class="w-1/2">
-            <h6 class="text-lg"><em>Are You Hungry?</em></h6>
-            <h1 class="text-2xl font-bold"><em>EVERY BITE A BETTER BURGER</em></h1>
-            <h1 class="text-6xl font-bold">Don't Wait</h1>
-            <a href="#menu" class="px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary inline-block">Order Now</a>
+            <h6 class="text-sm md:text-lg"><em>Are You Hungry?</em></h6>
+            <p class="hidden md:inline text-lg"><em>EVERY BITE A BETTER BURGER</em></p>
+            <h1 class="text-3xl md:text-6xl font-bold">Don't Wait</h1>
+            <a href="#menu"
+                class="text-sm px-1 md:ml-4 px-6 py-2 rounded-full text-white font-bold mt-4 btn-primary inline-block">Order
+                Now</a>
         </div>
         <div class="w-1/2">
             <img src="/img/hero-burger.png" alt="">
@@ -14,34 +16,34 @@
 </section>
 
 <!-- Menu Section -->
-<section id="menu" class="menu container px-16 py-8">
-    <h1 class="text-xl font-bold mb-12">All Burgers</h1>
+<div class="burgerMenu pb-16">
+    <section id="menu" class="auto w-11/12">
+        <h1 class="text-xl font-bold mb-12">All Burgers</h1>
 
-    <!-- Wrapper -->
-    <div class="grid grid-cols-3 gap-x-12 gap-y-12">
+        <!-- Wrapper -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-10 gap-y-14">
 
-        <!-- Javascript -->
-        <% burgerMenu.forEach(function(burger) { %>
+            <!-- Javascript -->
+            <% burgerMenu.forEach(function(burger) { %>
 
-        <!-- Card -->
-        <div class="container mx-auto card shadow-md">
-            <div class=" flex items-center justify-around">
-                <img class=" h-42 w-40 rounded-r-lg
-                " src="/img/<%= burger.image %>" alt="">
-                <div class="">
-                    <h2 class=" text-2xl ml-4 font-bold mt-0"><%= burger.name %></h2>
-                    <p class="text-xs uppercase px-4 py-3 mt-5"><%= burger.summary %></p>
+            <!-- Card -->
+            <div class=" card auto shadow-md rounded-lg">
+                <img class="mb-4 mx-auto rounded-lg" src="/img/<%= burger.image %> " alt="" />
+                <div class="text-center">
+                    <h2 class="mb-4 font-bold text-lg"><%= burger.name %> </h2>
+                    <span class="py-1 px-4 uppercase text-xs pr-4"><%= burger.summary %></span>
                     <div class="flex items-center justify-around mt-8">
-                        <span class="font-bold text-lg">₹<%= burger.price %>/-</span>
-                        <button data-burger="<%= JSON.stringify(burger)%>" class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold">
+                        <span class="font-bold text-lg text-center pb-5">₹ <%= burger.price  %>/- </span>
+                        <button data-burger="<%= JSON.stringify(burger) %>"
+                            class="add-to-cart py-1 px-6 rounded-full flex items-center font-bold mb-4">
                             <span>+</span>
                             <span class="ml-4">Add</span>
                         </button>
                     </div>
                 </div>
             </div>
-        </div>
-        <% })%>
+            <% })%>
 
-    </div>
-</section>
+        </div>
+    </section>
+</div>

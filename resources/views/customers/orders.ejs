@@ -1,5 +1,5 @@
-<section class="orders light-section">
-    <div class="container px-16 py-8 pt-12">
+<section class="w-11/12 orders light-section auto py-16">
+    <div class="container auto">
         <h1 class="font-bold text-lg mb-4">All Orders</h1>
 
         <% if (messages.success) { %>
@@ -51,7 +51,7 @@
                         <%= moment(order.createdAt).format('lll') %>
                     </td>
                     <td class="border px-4 py-2">
-                        <a href="/customer/orders/<%= order._id%>" class="link font-bold">Track Your Burger</a>
+                        <a href="/customer/orders/<%= order._id%>" class="link font-bold">Track here</a>
                     </td>
                 </tr>
                 <% }) %>
