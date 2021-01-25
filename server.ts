@@ -1,6 +1,6 @@
 require('dotenv').config();
 import express from 'express';
-import mongoose, { Collection, mongo } from "mongoose";
+import mongoose from "mongoose";
 import expressLayout from 'express-ejs-layouts';
 import path from 'path';
 import WebRoutes from './routes/WebRoutes';
@@ -9,6 +9,9 @@ import flash from 'express-flash';
 import connectMongo from 'connect-mongo';
 import Passport from 'passport';
 import { PassportInit } from './app/config/passport';
+import EventEmitter from 'events';
+
+export let eventEmitter = new EventEmitter;
 
 export class Server {
     public app: express.Application = express();
@@ -48,6 +51,10 @@ export class Server {
             mongooseConnection: mongoose.connection,
             collection: 'sessions'
         });
+
+        // Event Emitter
+        this.app.set('eventEmitter', eventEmitter);
+
 
         // Session Config
         this.app.use(session({

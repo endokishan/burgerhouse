@@ -6,6 +6,9 @@ export class StatusController {
             if (err) {
                 return res.redirect('/admin/orders');
             }
+            // Event Emitter
+            const eventEmitter = req.app.get('eventEmitter');
+            eventEmitter.emit('orderUpdated', {id: req.body.orderId, status: req.body.status});
             res.redirect('/admin/orders');
         })
     }

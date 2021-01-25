@@ -40,8 +40,7 @@ if (alertMsg) {
     }, 2000);
 };
 
-// Calling Admin 
-initAdmin();
+
 
 // delete cart items
 // function deleteCart() {
@@ -64,16 +63,20 @@ let order = hidden ? hidden.value : null;
 order = JSON.parse(order);
 let time = document.createElement('small');
 
-function updateStatus(order) {
+function updateStatus(Uorder) {
+    statuses.forEach((status) => {
+        status.classList.remove('step-compeleted');
+        status.classList.remove('current');
+    })
     let stepCompleted = true;
     statuses.forEach((status) => {
         let getData = status.dataset.status;
         if (stepCompleted) {
             status.classList.add('step-compeleted');
         };
-        if (getData === order.status) {
+        if (getData === Uorder.status) {
             stepCompleted = false;
-            time.innerText = moment(order.updatedAt).format('hh:mm A');
+            time.innerText = moment(Uorder.updatedAt).format('hh:mm A');
             status.appendChild(time);
             if (status.nextElementSibling) {
                 status.nextElementSibling.classList.add('current');
@@ -81,4 +84,33 @@ function updateStatus(order) {
         }
     })
 }
-updateStatus(order);
+
+updateStatus(order)
+// Socket
+let socket = io();
+
+// Calling Admin 
+initAdmin(socket);
+
+// join room
+if(order) {
+    socket.emit('join', `order_${order._id}`);
+};
+
+let adminPath = window.location.pathname;
+if (adminPath.includes('admin')) {
+    socket.emit('join', 'adminRoom');
+};
+
+socket.on('orderUpdated', (data) => {
+    const updatedOrder = {...order};
+    updatedOrder.updatedAt = moment().format();
+    updatedOrder.status = data.status;
+    updateStatus(updatedOrder);
+    new Noty({
+        type: 'warning',
+        theme: 'metroui',
+        timeout: 1500,
+        text: `Your Order ${data.status}`
+    }).show();
+})
