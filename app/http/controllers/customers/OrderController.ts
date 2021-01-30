@@ -1,13 +1,14 @@
 import Order from "../../../models/Order";
+require('dotenv').config();
 import moment from 'moment';
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 export class OrderController {
     static store(req, res, next) {
         // Validating Request
-        const { phone, address } = req.body;
+        const { phone, address, stripeToken, paymentType } = req.body;
         if (!phone || !address) {
-            req.flash('error', 'All Fields are Required');
-            return res.redirect('/cart');
+            return res.status(422).json({ message: 'All Fields are Required' });
         };
 
         const order = new Order({
@@ -20,20 +21,41 @@ export class OrderController {
 
         order.save().then(result => {
             Order.populate(result, { path: 'customerId' }, (err, placedOrder) => {
-                // req.flash('success', 'Order Placed Successfully');
-                delete req.session.cart;
+                // req.flash('success', 'Order placed successfully')
 
-                // Event Emitter
-                const eventEmitter = req.app.get('eventEmitter');
-                eventEmitter.emit('orderPlaced', placedOrder);
+                // Stripe payment
+                if (paymentType === 'card') {
+                    stripe.charges.create({
+                        amount: req.session.cart.totalPrice * 100,
+                        source: stripeToken,
+                        currency: 'inr',
+                        description: `Pizza order: ${placedOrder._id}`
+                    }).then(() => {
+                        placedOrder.updateOne({ paymentStatus: true, paymentType: paymentType }).then((updatedOrder) => {
+                            // Emit
+                            const eventEmitter = req.app.get('eventEmitter')
+                            eventEmitter.emit('orderPlaced', updatedOrder)
+                            delete req.session.cart
+                            return res.json({ message: 'Payment successful, Order placed successfully' });
+                        }).catch((err) => {
+                            return res.json({ message: 'Order Placed, Stripe Failed' });
+                        })
 
-                // return res.redirect('/customer/orders');
-                return res.json({ message: 'Order Placed Successfully' });
-            });
+                    }).catch((err) => {
+                        delete req.session.cart
+                        return res.json({ message: 'Order Placed but payment failed, You can pay at delivery time' });
+                    })
+                } else {
+                    // Emit
+                    const eventEmitter = req.app.get('eventEmitter')
+                    eventEmitter.emit('orderPlaced', placedOrder)
+                    delete req.session.cart
+                    return res.json({ message: 'Order placed succesfully' });
+                }
+            })
         }).catch(err => {
-            req.flash('error', 'Something Went Wrong');
-            return res.redirect('/cart');
-        });
+            return res.status(500).json({ message: 'Something went wrong' });
+        })
     };
 
     static async index(req, res, next) {

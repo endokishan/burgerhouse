@@ -1,0 +1,9 @@
+For Customers = {
+    email : testuser@gmail.com
+    password : Test@123
+};
+
+For Admin = {
+    email : testadmin@gmail.com
+    password : Test@123
+}
