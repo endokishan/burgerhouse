@@ -1926,7 +1926,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 var addToCart = document.querySelectorAll('.add-to-cart');
 var cartCounter = document.querySelector('#cartCounter');
-var removeItem = document.querySelectorAll('.removeItem');
 
 function updateCart(item) {
   axios__WEBPACK_IMPORTED_MODULE_0___default().post('/update-cart', item).then(function (res) {
@@ -1962,19 +1961,7 @@ if (alertMsg) {
   }, 2000);
 }
 
-; // delete cart items
-// function deleteCart() {
-//     axios.post('/update-cart').then(res => {
-//         let data = res.data.item;
-//         console.log(data);
-//     })
-// }
-// removeItem.forEach((btn) => {
-//     btn.addEventListener('click', (e) => {
-//         deleteCart()
-//     })
-// })
-// change order status
+; // change order status
 
 var statuses = document.querySelectorAll('.status-line');
 var hidden = document.querySelector('#hidden');

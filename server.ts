@@ -11,6 +11,8 @@ import Passport from 'passport';
 import { PassportInit } from './app/config/passport';
 import EventEmitter from 'events';
 
+
+// Event Emitter
 export let eventEmitter = new EventEmitter;
 
 export class Server {
@@ -22,8 +24,6 @@ export class Server {
         this.setRoutes();
 
         this.error404Handler();
-
-        this.handleError();
     }
 
     setConfiguration() {
@@ -102,10 +102,8 @@ export class Server {
     };
 
     error404Handler() {
-
-    };
-
-    handleError() {
-
+        this.app.use((req, res) => {
+            res.status(404).render('error/error')
+        })
     };
 };

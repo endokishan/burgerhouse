@@ -32,9 +32,12 @@
                 <% orders.forEach((order) => { %>
                 <tr>
                     <td class="border px-4 py-2">
-                        <% let parsedItems = Object.values(order.items) %>
-                        <% parsedItems.forEach((i) => { %>
-                            <p class="py-2"><span class="italic"><%= i.item.name%></span><span style="padding-left: 6px"></span><span class="text-xs">(<%= i.item.price%>/pc)</span> <span style="padding-left: 4px;padding-right: 4px;"> - </span> <span class="text-sm italic"><%= i.qty%> PC</span> </p>
+                        <% let eachOrder = Object.values(order.items) %>
+                        <% eachOrder.forEach((i) => { %>
+                        <p class="py-2"><span><%= i.item.name%></span><span style="padding-left: 6px"></span><span
+                                class="text-xs">(<%= i.item.price%>/-)</span> <span
+                                style="padding-left: 4px;padding-right: 4px;"> - </span> <span
+                                class="text-sm"><%= i.qty%> <span class="text-xs">Pc</span></span> </p>
                         <% }) %>
                     </td>
                     <td class="border px-4 py-2">
