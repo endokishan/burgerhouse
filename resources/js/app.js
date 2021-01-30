@@ -71,7 +71,47 @@ function updateStatus(Uorder) {
     })
 }
 
-updateStatus(order)
+updateStatus(order);
+
+// Ajax Call
+const paymentForm = document.querySelector('#payment-form');
+
+if (paymentForm) {
+    paymentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        let formData = new FormData(paymentForm);
+        let formObject = {};
+
+        for (let [key, value] of formData.entries()) {
+            formObject[key] = value;
+        }
+
+        axios.post('/orders', formObject).then((res) => {
+            new Noty({
+                type: 'warning',
+                theme: 'metroui',
+                timeout: 1000,
+                text: res.data.message
+            }).show();
+
+            // resirect to customer order page
+            setTimeout(() => {
+                window.location.href = '/customer/orders';
+            }, 1000);
+
+        }).catch((err) => {
+            new Noty({
+                type: 'error',
+                theme: 'metroui',
+                timeout: 1000,
+                text: err.res.data.message
+            }).show();
+        });
+    });
+}
+
+
+
 // Socket
 let socket = io();
 

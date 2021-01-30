@@ -20,14 +20,15 @@ export class OrderController {
 
         order.save().then(result => {
             Order.populate(result, { path: 'customerId' }, (err, placedOrder) => {
-                req.flash('success', 'Order Placed Successfully');
+                // req.flash('success', 'Order Placed Successfully');
                 delete req.session.cart;
 
                 // Event Emitter
                 const eventEmitter = req.app.get('eventEmitter');
                 eventEmitter.emit('orderPlaced', placedOrder);
 
-                return res.redirect('/customer/orders');
+                // return res.redirect('/customer/orders');
+                return res.json({ message: 'Order Placed Successfully' });
             });
         }).catch(err => {
             req.flash('error', 'Something Went Wrong');
