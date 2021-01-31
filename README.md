@@ -11,6 +11,7 @@
  __Customers__ :- Customer can place Orders by COD or Card Payment _(Stripe)_ and can also Track the Order status in __Realtime__.
 - Email : testuser@gmail.com 
 - Password : Test@123
+
 __Admin__ : Admin can see all the orders and can change the order status in __Realtime__.
 - Email : testadmin@gmail.com
 - Password : Test@123
@@ -18,12 +19,11 @@ __Admin__ : Admin can see all the orders and can change the order status in __Re
 ### __Live Project__ :-  <a href="http://3.17.207.4/"> <i>click here</i></a> ( deployed on AWS ).
 
 ## Images Sample 
-<div align="center">
+
 <img src="img/Home2.png" width="650" height="auto"/>
   <br>
 <img src="img/Track.png" width="650" height="auto"/>
-</div>
-<hr>
+
 
 ## Run locally on your machine:
 You need to have installed __globally__  _npm_.
