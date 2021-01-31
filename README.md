@@ -16,7 +16,7 @@ __Admin__ : Admin can see all the orders and can change the order status in __Re
 - Email : testadmin@gmail.com
 - Password : Test@123
 
-### __Live Project__ :-  <a href="http://3.17.207.4/"> <i>click here</i></a> ( deployed on AWS ).
+## __Live Project__ :-  <a href="http://3.17.207.4/"> <i>click here</i></a> ( deployed on AWS ).
 
 ## Images Sample 
 
@@ -26,7 +26,7 @@ __Admin__ : Admin can see all the orders and can change the order status in __Re
 
 
 ## Run locally on your machine:
-You need to have installed __globally__  _npm_.
+You need to have installed _npm_ _globally_.
 
 Global Pacakage
 ``` shell
