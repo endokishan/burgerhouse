@@ -4,7 +4,7 @@
   "description": "It's a Realtime Burger Ordering and Delivering App",
   "main": "index.js",
   "scripts": {
-    "serve": "ts-node server.ts",
+    "serve": "ts-node index.ts",
     "dev": "nodemon --exec ts-node index.ts"
   },
   "author": "endokishan",
