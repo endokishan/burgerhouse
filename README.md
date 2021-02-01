@@ -16,6 +16,8 @@ __Admin__ : Admin can see all the orders and can change the order status in __Re
 - Email : testadmin@gmail.com
 - Password : Test@123
 
+> **_NOTE :_**  If you want to test Card Payment here is Card Sample : Card no - 4242 4242 4242 4242   exp - 05/24  cvv - 123.
+
 ## __Live Project__ :-  <a href="http://3.17.207.4/"> <i>click here</i></a> ( deployed on AWS ).
 
 ## Images Sample 
