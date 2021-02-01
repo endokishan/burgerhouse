@@ -25,6 +25,30 @@ __Admin__ : Admin can see all the orders and can change the order status in __Re
 <img src="img/Track.png" width="650" height="auto"/>
 
 
+## Project Structure
+
+    ├── app  .                   # source file backend
+    ├── public                   # Compiled files
+    ├── resource                 # Source files fronend
+    ├── routes                   # routes
+    ├─ index.ts                  # starting point
+    ├─ server.ts                 # server configuration
+    └── ...
+
+
+### Backend Tech Stack :- 
+- [Node js](https://nodejs.org/en/)
+- [Typescript](https://www.typescriptlang.org/)
+- [Express js](https://expressjs.com/)
+- [Mongoose](https://www.mongodb.com/)
+
+### Frontend Tech Stack :- 
+- [Javascript](https://www.javascript.com/)
+- [Saas](https://sass-lang.com/)
+- [ejs](https://ejs.co/)
+- [Laravel Mix](https://laravel-mix.com/)
+
+
 ## Run locally on your machine:
 You need to have installed _npm_ _globally_.
 
@@ -51,18 +75,6 @@ Start NodeJS Server
 npm run dev
 ```
 
-
-### Backend Tech Stack :- 
-- [Node js](https://nodejs.org/en/)
-- [Typescript](https://www.typescriptlang.org/)
-- [Express js](https://expressjs.com/)
-- [Mongoose](https://www.mongodb.com/)
-
-### Frontend Tech Stack :- 
-- [Javascript](https://www.javascript.com/)
-- [Saas](https://sass-lang.com/)
-- [ejs](https://ejs.co/)
-- [Laravel Mix](https://laravel-mix.com/)
 
 ### Packages :- 
 - [Node js](https://nodejs.org/en/)
